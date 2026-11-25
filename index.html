@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Tesourinha Feliz | Cabeleireiro Infantil em São José dos Pinhais</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --green: #b7da86;
+            --green2: #d6ecb0;
+            --leaf: #5f8f3b;
+            --dark: #3f6a28;
+            --brown: #6a3f1c;
+            --cream: #fbf2dc;
+            --paper: #f6e9c8;
+            --orange: #ee8a34;
+            --txt: #4a3320;
+            --head: "Fredoka", "Trebuchet MS", sans-serif;
+            --body: "Nunito", system-ui, sans-serif;
+            box-sizing: border-box;
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px)
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: inherit
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 84px;
+            color-scheme: light
+        }
+
+        body {
+            margin: 0;
+            background: var(--green2);
+            color: var(--txt);
+            font-family: var(--body);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            overflow-x: hidden
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: var(--head);
+            margin: 0;
+            line-height: 1.1
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        .wrap {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 0 20px
+        }
+
+        section {
+            padding: 72px 0;
+            position: relative
+        }
+
+        h2 {
+            font-size: clamp(2rem, 6vw, 3rem);
+            color: var(--dark);
+            text-align: center
+        }
+
+        .sub {
+            text-align: center;
+            color: var(--brown);
+            margin: 8px auto 38px;
+            max-width: 520px
+        }
+
+        nav {
+            position: fixed;
+            top: calc(10px + env(safe-area-inset-top, 0px));
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            width: min(94%, 720px);
+            background: var(--cream);
+            border: 3px solid var(--brown);
+            border-radius: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 10px 8px 22px;
+            box-shadow: 0 6px 0 rgba(106, 63, 28, .25)
+        }
+
+        .logo {
+            font-family: var(--head);
+            font-weight: 700;
+            color: var(--brown);
+            font-size: 1.15rem
+        }
+
+        .logo i {
+            font-style: normal;
+            color: var(--leaf)
+        }
+
+        nav ul {
+            display: flex;
+            gap: 6px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-weight: 700;
+            font-size: .9rem
+        }
+
+        nav ul a {
+            padding: 8px 14px;
+            border-radius: 30px;
+            transition: background .3s
+        }
+
+        nav ul a:hover {
+            background: var(--green)
+        }
+
+        nav ul li:last-child a {
+            background: var(--orange);
+            color: #fff
+        }
+
+        @media(max-width:620px) {
+            nav ul li:not(:last-child) {
+                display: none
+            }
+        }
+
+        .hero {
+            min-height: 100svh;
+            display: grid;
+            place-items: center;
+            padding: 110px 0 70px;
+            background: linear-gradient(180deg, var(--green), var(--green2));
+            overflow: hidden
+        }
+
+        .leaf {
+            position: absolute;
+            width: 150px;
+            height: 200px;
+            background: radial-gradient(circle at 30% 30%, #7fb257, var(--leaf));
+            border-radius: 0 100% 0 100%;
+            opacity: .75;
+            animation: sway 7s ease-in-out infinite
+        }
+
+        .leaf.a {
+            top: -30px;
+            left: -30px;
+            transform: rotate(25deg)
+        }
+
+        .leaf.b {
+            top: 60px;
+            right: -40px;
+            width: 120px;
+            height: 160px;
+            transform: rotate(-70deg);
+            animation-delay: -2s
+        }
+
+        .leaf.c {
+            bottom: -40px;
+            left: 6%;
+            width: 170px;
+            height: 210px;
+            transform: rotate(100deg);
+            animation-delay: -4s
+        }
+
+        .leaf.d {
+            bottom: 30px;
+            right: 4%;
+            width: 100px;
+            height: 130px;
+            transform: rotate(-20deg);
+            animation-delay: -1s
+        }
+
+        @keyframes sway {
+            50% {
+                translate: 0 14px;
+                rotate: 6deg
+            }
+        }
+
+        .board {
+            position: relative;
+            z-index: 2;
+            background: var(--paper);
+            border: 12px solid var(--brown);
+            border-radius: 26px;
+            padding: 42px 28px;
+            text-align: center;
+            max-width: 640px;
+            width: 100%;
+            box-shadow: 0 14px 0 rgba(106, 63, 28, .28);
+            animation: drop 1s cubic-bezier(.2, 1.3, .4, 1) both
+        }
+
+        @keyframes drop {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) rotate(-3deg)
+            }
+        }
+
+        .scis {
+            font-size: 2rem;
+            display: inline-block;
+            animation: snip 2.4s ease-in-out infinite;
+            transform-origin: 50% 50%
+        }
+
+        @keyframes snip {
+
+            0%,
+            60%,
+            100% {
+                rotate: 0deg
+            }
+
+            70% {
+                rotate: -18deg
+            }
+
+            80% {
+                rotate: 12deg
+            }
+
+            90% {
+                rotate: -8deg
+            }
+        }
+
+        .board h1 {
+            font-size: clamp(2.7rem, 12vw, 5rem);
+            font-weight: 700;
+            color: var(--brown);
+            letter-spacing: .01em
+        }
+
+        .board h1 span {
+            display: block;
+            color: var(--leaf)
+        }
+
+        .tag {
+            display: inline-block;
+            margin: 12px 0 18px;
+            color: var(--orange);
+            font-family: var(--head);
+            font-weight: 600;
+            letter-spacing: .16em;
+            font-size: .95rem
+        }
+
+        .board p {
+            margin: 0 0 6px;
+            font-family: var(--head);
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            color: var(--dark);
+            font-weight: 600
+        }
+
+        .board small {
+            display: block;
+            color: var(--brown);
+            font-size: 1.02rem;
+            margin-bottom: 26px
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 34px;
+            border-radius: 50px;
+            font-family: var(--head);
+            font-weight: 600;
+            font-size: 1.08rem;
+            border: 3px solid var(--brown);
+            cursor: pointer;
+            transition: transform .25s, box-shadow .25s;
+            background: var(--orange);
+            color: #fff;
+            box-shadow: 0 5px 0 var(--brown)
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 0 var(--brown)
+        }
+
+        .btn:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0 var(--brown)
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 22px
+        }
+
+        .card {
+            background: var(--cream);
+            border: 3px solid var(--brown);
+            border-radius: 24px;
+            padding: 30px 24px;
+            text-align: center;
+            box-shadow: 0 7px 0 rgba(106, 63, 28, .22);
+            transition: transform .35s
+        }
+
+        .card:hover {
+            transform: translateY(-8px) rotate(-1.5deg)
+        }
+
+        .card .e {
+            font-size: 2.6rem;
+            display: block;
+            margin-bottom: 8px
+        }
+
+        .card h3 {
+            font-size: 1.35rem;
+            color: var(--dark);
+            margin-bottom: 6px
+        }
+
+        .card p {
+            margin: 0;
+            font-size: .97rem
+        }
+
+        .cert {
+            background: var(--leaf);
+            color: #fff
+        }
+
+        .cert .box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 36px;
+            align-items: center
+        }
+
+        @media(max-width:760px) {
+            .cert .box {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .cert h2 {
+            color: #fff;
+            text-align: left
+        }
+
+        .cert p {
+            margin: 14px 0 0
+        }
+
+        .diploma {
+            background: var(--cream);
+            color: var(--brown);
+            border: 5px double var(--orange);
+            border-radius: 16px;
+            padding: 30px 22px;
+            text-align: center;
+            transform: rotate(-2.5deg);
+            box-shadow: 0 12px 0 rgba(0, 0, 0, .18);
+            transition: transform .5s
+        }
+
+        .diploma:hover {
+            transform: rotate(0) scale(1.03)
+        }
+
+        .diploma b {
+            font-family: var(--head);
+            font-size: 1.9rem;
+            display: block;
+            color: var(--dark)
+        }
+
+        .diploma .m {
+            font-size: 2.4rem
+        }
+
+        .gal {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px
+        }
+
+        @media(max-width:620px) {
+            .gal {
+                grid-template-columns: repeat(2, 1fr)
+            }
+        }
+
+        .ph {
+            aspect-ratio: 1;
+            border-radius: 24px;
+            border: 3px dashed var(--leaf);
+            background: var(--green);
+            display: grid;
+            place-items: center;
+            text-align: center;
+            color: var(--dark);
+            font-family: var(--head);
+            font-weight: 500;
+            padding: 10px;
+            transition: transform .4s
+        }
+
+        .ph:hover {
+            transform: scale(1.05) rotate(2deg)
+        }
+
+        .ph span {
+            display: block;
+            font-size: 2.2rem
+        }
+
+        .note {
+            text-align: center;
+            font-size: .82rem;
+            margin-top: 20px;
+            opacity: .75
+        }
+
+        .book {
+            background: linear-gradient(180deg, var(--green), var(--green2))
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--paper);
+            border: 8px solid var(--brown);
+            border-radius: 26px;
+            padding: 32px 26px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            box-shadow: 0 12px 0 rgba(106, 63, 28, .28)
+        }
+
+        form .full {
+            grid-column: 1/-1
+        }
+
+        @media(max-width:560px) {
+            form {
+                grid-template-columns: 1fr;
+                padding: 26px 18px
+            }
+        }
+
+        label {
+            display: block;
+            font-family: var(--head);
+            font-weight: 500;
+            color: var(--brown);
+            margin-bottom: 5px;
+            font-size: .95rem
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 13px 15px;
+            border-radius: 14px;
+            border: 3px solid var(--green);
+            background: #fff;
+            color: var(--txt);
+            font: inherit;
+            transition: border-color .3s, box-shadow .3s
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--orange);
+            box-shadow: 0 0 0 4px rgba(238, 138, 52, .2)
+        }
+
+        form .btn {
+            width: 100%
+        }
+
+        .ok {
+            display: none;
+            text-align: center;
+            color: var(--dark);
+            font-weight: 700
+        }
+
+        .where {
+            display: grid;
+            gap: 14px;
+            text-align: center;
+            justify-items: center
+        }
+
+        .pin {
+            background: var(--brown);
+            color: var(--cream);
+            padding: 16px 26px;
+            border-radius: 18px;
+            font-weight: 700;
+            max-width: 480px
+        }
+
+        .links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center
+        }
+
+        .links .btn {
+            background: var(--cream);
+            color: var(--brown)
+        }
+
+        footer {
+            background: var(--brown);
+            color: var(--cream);
+            text-align: center;
+            padding: 28px 20px 110px;
+            font-size: .88rem
+        }
+
+        .fab {
+            position: fixed;
+            right: max(16px, env(safe-area-inset-right, 0px));
+            z-index: 30;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: var(--cream);
+            border: 3px solid var(--brown);
+            color: var(--brown);
+            box-shadow: 0 4px 0 var(--brown);
+            transition: transform .25s, background .25s, color .25s;
+            animation: pop .8s cubic-bezier(.2, 1.5, .4, 1) both
+        }
+
+        .fab svg {
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round
+        }
+
+        .fab:hover {
+            background: var(--leaf);
+            color: #fff;
+            transform: translateY(-3px) scale(1.08)
+        }
+
+        .fab.wa {
+            bottom: calc(84px + env(safe-area-inset-bottom, 0px))
+        }
+
+        .fab.ig {
+            bottom: calc(22px + env(safe-area-inset-bottom, 0px));
+            animation-delay: .15s
+        }
+
+        @keyframes pop {
+            from {
+                opacity: 0;
+                transform: scale(.3)
+            }
+        }
+
+        .rv {
+            opacity: 0;
+            transform: translateY(30px) scale(.97);
+            transition: opacity .8s ease, transform .8s cubic-bezier(.2, 1.2, .4, 1)
+        }
+
+        .rv.in {
+            opacity: 1;
+            transform: none
+        }
+
+        .rv:nth-child(2) {
+            transition-delay: .12s
+        }
+
+        .rv:nth-child(3) {
+            transition-delay: .24s
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+            * {
+                animation: none !important;
+                transition: none !important
+            }
+
+            .rv {
+                opacity: 1;
+                transform: none
+            }
+
+            html {
+                scroll-behavior: auto
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav><a href="#top" class="logo">Tesourinha <i>Feliz</i></a>
+        <ul>
+            <li><a href="#beneficios">Benefícios</a></li>
+            <li><a href="#galeria">Galeria</a></li>
+            <li><a href="#agendar">Agendar</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero" id="top">
+        <div class="leaf a"></div>
+        <div class="leaf b"></div>
+        <div class="leaf c"></div>
+        <div class="leaf d"></div>
+        <div class="wrap">
+            <div class="board">
+                <span class="scis">✂️</span>
+                <h1>Tesourinha<span>Feliz</span></h1>
+                <div class="tag">CABELEIREIRO INFANTIL</div>
+                <p>Corte infantil sem choro</p>
+                <small>Com carinho, paciência e diversão!</small>
+                <a href="#agendar" class="btn">Agendar agora</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="beneficios">
+        <div class="wrap">
+            <h2>Por que escolher a gente?</h2>
+            <p class="sub">Um cantinho feito para os pequenos se divertirem enquanto cuidam do cabelo.</p>
+            <div class="cards">
+                <div class="card rv"><span class="e">✂️</span>
+                    <h3>Especialistas em crianças</h3>
+                    <p>Profissionais preparados para cuidar dos pequenos com paciência e delicadeza.</p>
+                </div>
+                <div class="card rv"><span class="e">🦁</span>
+                    <h3>Ambiente lúdico</h3>
+                    <p>Espaço acolhedor, colorido e divertido para meninos e meninas.</p>
+                </div>
+                <div class="card rv"><span class="e">🏅</span>
+                    <h3>Certificado especial</h3>
+                    <p>O primeiro corte é celebrado com um certificado para guardar de lembrança.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cert">
+        <div class="wrap box">
+            <div class="rv">
+                <h2>1º corte é uma festa!</h2>
+                <p>O primeiro corte de cabelo é um momento único. Aqui ele é registrado com um certificado especial,
+                    para a família guardar com carinho.</p>
+            </div>
+            <div class="diploma rv">
+                <div class="m">🏆</div><b>Certificado do 1º Corte</b>Parabéns, pequeno(a) corajoso(a)!
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria">
+        <div class="wrap">
+            <h2>Pequenos clientes felizes</h2>
+            <p class="sub">Sorrisos que dão orgulho de ver.</p>
+            <div class="gal">
+                <div class="ph rv">
+                    <div><span>🐘</span>Foto do cliente</div>
+                </div>
+                <div class="ph rv">
+                    <div><span>🦁</span>Antes e depois</div>
+                </div>
+                <div class="ph rv">
+                    <div><span>🐒</span>Primeiro corte</div>
+                </div>
+                <div class="ph rv">
+                    <div><span>🌿</span>O ambiente</div>
+                </div>
+                <div class="ph rv">
+                    <div><span>✂️</span>Corte infantil</div>
+                </div>
+                <div class="ph rv">
+                    <div><span>🏅</span>Certificado</div>
+                </div>
+            </div>
+            <p class="note">Substitua estes espaços pelas fotos do salão e dos clientes.</p>
+        </div>
+    </section>
+
+    <section class="book" id="agendar">
+        <div class="wrap">
+            <h2>Agende o horário</h2>
+            <p class="sub">Preencha os dados e confirme pelo WhatsApp.</p>
+            <form id="f" class="rv">
+                <div class="full"><label for="n">Seu nome (responsável)</label><input id="n" required
+                        placeholder="Nome completo"></div>
+                <div class="full"><label for="k">Nome da criança</label><input id="k" required
+                        placeholder="Quem vai cortar o cabelo?"></div>
+                <div class="full"><label for="t">WhatsApp</label><input id="t" type="tel" required
+                        placeholder="(41) 99999-9999"></div>
+                <div><label for="d">Dia desejado</label><input id="d" type="date" required></div>
+                <div><label for="h">Horário</label><input id="h" type="time" required></div>
+                <div class="full"><label for="s">Serviço</label><select id="s" required>
+                        <option value="">Escolha um serviço</option>
+                        <option>Corte infantil</option>
+                        <option>1º corte com certificado especial</option>
+                    </select></div>
+                <div class="full"><button class="btn" type="submit">Enviar pelo WhatsApp</button></div>
+                <div class="ok full" id="ok">Abrindo o WhatsApp para confirmar o seu pedido…</div>
+            </form>
+        </div>
+    </section>
+
+    <section>
+        <div class="wrap where">
+            <h2>Venha nos visitar</h2>
+            <div class="pin">📍 Rua Dona Izabel A Redentora, 2562<br>Centro, São José dos Pinhais – PR</div>
+            <div class="links"><a class="btn"
+                    href="https://www.google.com/maps/search/?api=1&query=Rua+Dona+Izabel+A+Redentora+2562+Sao+Jose+dos+Pinhais"
+                    target="_blank" rel="noopener">Ver no mapa</a><a class="btn"
+                    href="https://www.instagram.com/tesourinha.feliz/" target="_blank"
+                    rel="noopener">@tesourinha.feliz</a></div>
+        </div>
+    </section>
+
+    <footer>© 2026 Tesourinha Feliz · Cabeleireiro Infantil · (41) 99857-0137</footer>
+
+    <a class="fab wa" href="https://wa.me/5541998570137" target="_blank" rel="noopener" aria-label="WhatsApp"><svg
+            viewBox="0 0 24 24">
+            <path d="M3 21l1.6-4.7A8.5 8.5 0 1 1 8 19.6L3 21z" />
+            <path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8c-1-.4-2-1.4-2.4-2.4l.8-1-1-2L9 8.5z" />
+        </svg></a>
+    <a class="fab ig" href="https://www.instagram.com/tesourinha.feliz/" target="_blank" rel="noopener"
+        aria-label="Instagram"><svg viewBox="0 0 24 24">
+            <rect x="3" y="3" width="18" height="18" rx="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.5" cy="6.5" r=".6" />
+        </svg></a>
+
+    <script>
+        var io = new IntersectionObserver(function (e) { e.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target) } }) }, { threshold: .15 });
+        document.querySelectorAll('.rv').forEach(function (el) { io.observe(el) });
+        var d = document.getElementById('d'); d.min = new Date().toISOString().split('T')[0];
+        document.getElementById('f').addEventListener('submit', function (ev) {
+            ev.preventDefault();
+            var dt = d.value.split('-').reverse().join('/');
+            var m = 'Olá! Gostaria de agendar um horário na Tesourinha Feliz.\n\n*Responsável:* ' + n.value + '\n*Criança:* ' + k.value + '\n*Telefone:* ' + t.value + '\n*Serviço:* ' + s.value + '\n*Dia:* ' + dt + '\n*Horário:* ' + h.value;
+            document.getElementById('ok').style.display = 'block';
+            window.open('https://wa.me/5541998570137?text=' + encodeURIComponent(m), '_blank');
+        });
+    </script>
+</body>
+
+</html>
