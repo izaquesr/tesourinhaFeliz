@@ -637,6 +637,101 @@
                 scroll-behavior: auto
             }
         }
+
+        html,
+        body {
+            max-width: 100%;
+            overflow-x: hidden
+        }
+
+        form>* {
+            min-width: 0
+        }
+
+        input,
+        select,
+        button {
+            max-width: 100%;
+            font-size: 16px
+        }
+
+        input[type=date],
+        input[type=time] {
+            -webkit-appearance: none;
+            appearance: none;
+            min-height: 50px;
+            text-align: left
+        }
+
+        .board h1 {
+            overflow-wrap: anywhere
+        }
+
+        @media(max-width:700px) {
+            section {
+                padding: 60px 0
+            }
+
+            .cert h2,
+            .cert p {
+                text-align: center
+            }
+
+            .links .btn {
+                width: 100%;
+                text-align: center
+            }
+        }
+
+        @media(max-width:480px) {
+            .board {
+                border-width: 8px;
+                padding: 30px 16px;
+                border-radius: 20px
+            }
+
+            .board h1 {
+                font-size: clamp(2.1rem, 11.5vw, 3rem)
+            }
+
+            form {
+                border-width: 6px;
+                padding: 24px 16px
+            }
+
+            .wrap {
+                padding: 0 16px
+            }
+
+            .leaf {
+                opacity: .5
+            }
+
+            .card {
+                padding: 24px 18px
+            }
+
+            nav {
+                padding: 6px 8px 6px 16px
+            }
+
+            .logo {
+                font-size: 1rem
+            }
+
+            nav ul a {
+                padding: 8px 12px
+            }
+
+            .pin {
+                padding: 14px 16px
+            }
+
+            .fab {
+                width: 46px;
+                height: 46px
+            }
+        }
     </style>
 </head>
 
